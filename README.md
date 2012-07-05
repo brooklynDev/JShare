@@ -1,6 +1,12 @@
 JShare - Share your Node.js server side variables with your client side Javascript. 
 ===============
 
+Installation:
+------
+
+You can install it directly from npm:
+
+    npm install jshare
 
 Usage:
 ------
