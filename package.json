@@ -1,0 +1,11 @@
+{
+    "name": "jshare"
+  , "description" : "Share you server side Node.js/Express variables with your client side Javascript."	
+  , "version": "0.0.1"
+  , "dependencies": { },
+   "devDependencies": {
+        "mocha": "*"
+      , "expect.js": "*"
+    }
+  , "author" : "Alex Friedman"
+}
