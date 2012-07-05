@@ -5,13 +5,14 @@ JShare - Share your Node.js server side variables with your client side Javascri
 Usage:
 ------
 
-First, you need to add the JShare middleware to your Express app:
+First, you need to add the JShare middleware to your Express app **make sure to add it before the call to app.router**:
 
 **app.js**
 
     var jshare = require('jshare');
     app.configure(function(){
-	    jshare();
+	    app.use(jshare());
+	    app.use(app.router);
 	});
 
 Next, you need to make a call out to the JShare helper method in your layout file:
