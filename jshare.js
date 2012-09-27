@@ -7,8 +7,7 @@ module.exports = function(){
 			return;
 		}
 		res.jshare = {};
-		res.locals.includeJShare = function(req,res){
-				return function(namespace){
+		res.locals.includeJShare = function(namespace){
 					if(typeof(namespace) == 'undefined' || namespace === ''){
 						namespace = "jshare";
 					}
@@ -17,7 +16,6 @@ module.exports = function(){
 					}
 					return '<script type="text/javascript">window.' + namespace +'=' + JSON.stringify(res.jshare) + '</script>';
 				}
-			}
 		next();
 	};
 }
