@@ -59,7 +59,7 @@ When calling the `jshare()` function from within your app.js, you can optionally
     app.configure(function(){
       app.use(jshare('foo'));
       app.use(app.router);
-  });
+    });
 
 **index.js**
     
