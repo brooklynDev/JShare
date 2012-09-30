@@ -1,5 +1,5 @@
 var expect = require('expect.js');
-var jshare = require('../jshare.js')();
+var jshare = require('../jshare.js');
 
 describe('jshare',function(){
 	it('should populate response object with jshare', function(){
@@ -30,14 +30,14 @@ describe('jshare',function(){
 function runJShareTest(namespace, data,callback){
 	var app = {};
 	var req = {app : app};
-	var res = {};
+	var res = {locals : {}};
 	var next = function(){};
-	app.dynamicHelpers = function(helpers){
+	res.locals = function(helpers){
 		for(var prop in data){
 			res.jshare[prop] = data[prop];
 		}
-		var result = helpers.includeJShare(req,res)(namespace);
+		var result = helpers.includeJShare(req,res)();
 		callback(req,res,result);
 	}
-	jshare(req,res,next);
+	jshare(namespace)(req,res,next);
 }

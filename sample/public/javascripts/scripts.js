@@ -1,6 +1,6 @@
 $(function () {
        $("#showPerson").click(function () {
-           var person = jshare.person;
+           var person = alex.person;
            var div = $("#output");
            div.html('');
            div.append("FirstName: " + person.firstName);

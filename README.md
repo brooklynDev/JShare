@@ -51,12 +51,23 @@ Now, in your client-side javascript, all of your variables that you set on the s
 Options:
 ------
 
-When calling the `includeJShare()` function from within your layout, you can optionally pass in a `namespace` parameter. What that does is it prefaces the client side Javascript variables with your custom namespace as opposed to 'JShare':
+When calling the `jshare()` function from within your app.js, you can optionally pass in a `namespace` parameter. What that does is it prefaces the Javascript variables (both client and server side) with your custom namespace as opposed to 'JShare':
 
-**layout.jade**
-   
-    !{includeJShare('foo')}
+**app.js**
+
+    var jshare = require('jshare');
+    app.configure(function(){
+      app.use(jshare('foo'));
+      app.use(app.router);
+  });
+
+**index.js**
+    
+    exports.index = function(req, res){
+      res.foo.person = {firstName : "Alex"}; //notice the res.foo instead of the res.jshare
+      res.render('index', { title: 'Express' })
+    };
 
 **clientJS.js**
 
-    alert(foo.person.name);
+    alert(foo.person.firstName);
