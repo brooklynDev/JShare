@@ -10,7 +10,7 @@ module.exports = function(namespace) {
 			return;
 		}
 		res[namespace] = {};
-		res.locals.includeJShare = function() {
+		res.locals.includeJShare = res.locals.JShare = function() {
 			if (typeof(res[namespace]) === 'undefined' || isEmpty(res[namespace])) {
 				return "";
 			}

@@ -17,9 +17,9 @@ First, you need to add the JShare middleware to your Express app **make sure to 
 
     var jshare = require('jshare');
     app.configure(function(){
-	    app.use(jshare());
-	    app.use(app.router);
-	});
+      app.use(jshare());
+      app.use(app.router);
+  });
 
 Next, you need to make a call out to the JShare helper method in your layout file:
 
@@ -30,8 +30,12 @@ Next, you need to make a call out to the JShare helper method in your layout fil
       head
         title= title
         link(rel='stylesheet', href='/stylesheets/style.css')
-        !{includeJShare()}
+        !{JShare()}
       body!= body
+
+**Note**
+
+In previous versions of JShare, you had to call includeJShare() in your view, however this is now incompatible with EJS (thanks to [minttoothpick](https://github.com/minttoothpick) for pointing this out). For backwards compatibility this will still work with Jade, however it is encouraged to use JShare() moving forward. 
 
 And finally, in your routes file, you can now attach any variables to the Response:
 
