@@ -30,7 +30,7 @@ Next, you need to make a call out to the JShare helper method in your layout fil
       head
         title= title
         link(rel='stylesheet', href='/stylesheets/style.css')
-        !{JShare()}
+        != JShare()
       body!= body
 
 **Note**
@@ -54,6 +54,7 @@ Now, in your client-side javascript, all of your variables that you set on the s
 
 Options:
 ------
+**Namespace**
 
 When calling the `jshare()` function from within your app.js, you can optionally pass in a `namespace` parameter. What that does is it prefaces the Javascript variables (both client and server side) with your custom namespace as opposed to 'JShare':
 
@@ -75,3 +76,31 @@ When calling the `jshare()` function from within your app.js, you can optionally
 **clientJS.js**
 
     alert(foo.person.firstName);
+
+**Script Tag**
+
+When calling the JShare() function from within the view, you can specify if you'd like to have the script tag automatically generated for you (this is the default) or not. You do this by specificying an options object:
+
+**layout.jade** (or whatever other view engine you're using)
+
+    !!!
+    html
+      head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        != JShare({ outputScriptTag:true })
+      body!= body
+
+**Dynamic External JS File**
+
+By default, the outputed JS gets put right where you call JShare in your view. If you'd rather have it be dumped in an external file, JShare provides the option to have a dynamic JS file be created, and the output of JShare() will be the path to that JS file:
+
+**layout.jade** (or whatever other view engine you're using)
+
+    !!!
+    html
+      head
+        title= title
+        link(rel='stylesheet', href='/stylesheets/style.css')
+        != JShare({ useExternalJSFile:true })
+      body!= body
