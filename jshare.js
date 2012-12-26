@@ -23,7 +23,6 @@ module.exports = function(namespace) {
 				app.get("/jshare.js", function(request, response) {
 					response.send(getOutputJS(false, namespace, res[namespace]));
 				});
-
 				return "<script type='text/javascript' src='/jshare.js'></script>";
 			}
 

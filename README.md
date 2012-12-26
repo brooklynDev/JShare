@@ -93,7 +93,7 @@ When calling the JShare() function from within the view, you can specify if you'
 
 **Dynamic External JS File**
 
-By default, the outputed JS gets put right where you call JShare in your view. If you'd rather have it be dumped in an external file, JShare provides the option to have a dynamic JS file be created, and the output of JShare() will be the path to that JS file:
+By default, the outputed JS gets put right where you call JShare in your view. If you'd rather have it be dumped in an external file, JShare provides the option to have a dynamic JS file be created, and the output of JShare() will be the path to that JS file: 
 
 **layout.jade** (or whatever other view engine you're using)
 
