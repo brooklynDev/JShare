@@ -23,7 +23,8 @@ module.exports = function(namespace) {
 				app.get("/jshare.js", function(request, response) {
 					response.send(getOutputJS(false, namespace, res[namespace]));
 				});
-				return "<script type='text/javascript' src='/jshare.js'></script>";
+				var cacheBusterRandomNumber = Math.floor((Math.random()*10000000) + 1);
+				return "<script type='text/javascript' src='/jshare.js?r=" + cacheBusterRandomNumber + "'></script>";
 			}
 
 			return getOutputJS(options.outputScriptTag, namespace, res[namespace]);
