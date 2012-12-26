@@ -67,6 +67,5 @@ function runJShareTest(namespace, data, options, callback) {
 
 		var result = res.locals.JShare(options);
 		callback(req, res, result);
-
 	});
 }
