@@ -1,3 +1,5 @@
+var _ = require("underscore");
+
 module.exports = function(namespace) {
 	return function(req, res, next) {
 
@@ -20,9 +22,19 @@ module.exports = function(namespace) {
 
 			options = options ? options : getDefaultOptions();
 			if(options.useExternalJSFile === true) {
-				app.get("/jshare.js", function(request, response) {
+				var jshareScriptFunction = function(request, response) {
 					response.send(getOutputJS(false, namespace, res[namespace]));
-				});
+				};
+				var jshareGetRequest = _.chain(app.routes.get)
+                   						.where({path: '/jshare.js'})
+                   						.first().value();
+				if(jshareGetRequest == undefined){
+					app.get("/jshare.js", jshareScriptFunction);	
+				}
+				else{
+					jshareGetRequest.callbacks = [jshareScriptFunction];
+				}
+				
 				var cacheBusterRandomNumber = Math.floor((Math.random()*10000000) + 1);
 				return "<script type='text/javascript' src='/jshare.js?r=" + cacheBusterRandomNumber + "'></script>";
 			}
