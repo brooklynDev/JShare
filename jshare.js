@@ -59,14 +59,26 @@ function getDefaultOptions() {
 	};
 }
 
+function jshareMergeObject(oldJshare, newJshare){
+	var result = {};
+	for(var prop in oldJshare){
+		result[prop] = oldJshare[prop];
+	}
+	for(var prop in newJshare){
+		result[prop] = newJshare[prop];
+	}
+	return result;
+}
+
 function getOutputJS(outputScriptTag, namespace, obj) {
 	var output = "";
 	if(outputScriptTag === true) {
 		output = '<script type="text/javascript">';
 	}
 
-	output += 'window.' + namespace + '=' + JSON.stringify(obj);
-
+	output += jshareMergeObject.toString();
+	output += 'window.' + namespace + '=' + 'jshareMergeObject(window.' + namespace + ', ' + JSON.stringify(obj) + ');';
+	
 	if(outputScriptTag === true) {
 		output += '</script>';
 	}
