@@ -1,3 +1,5 @@
+[![NPM](https://nodei.co/npm/jshare.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/jshare/)
+
 JShare - Share your Node.js server side variables with your client side Javascript. 
 ===============
 
