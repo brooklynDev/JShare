@@ -14,7 +14,7 @@ describe('jshare', function() {
 		runJShareTest('jshare', {
 			value: 100
 		}, null, function(req, res, result) {
-			expect(result).to.eql('<script type="text/javascript">window.jshare={"value":100}</script>');
+			expect(result).to.eql('<script type="text/javascript">function jshareMergeObject(oldJshare, newJshare){\n\tvar result = {};\n\tfor(var prop in oldJshare){\n\t\tresult[prop] = oldJshare[prop];\n\t}\n\tfor(var prop in newJshare){\n\t\tresult[prop] = newJshare[prop];\n\t}\n\treturn result;\n}window.jshare=jshareMergeObject(window.jshare, {"value":100});</script>');
 		})
 	})
 
@@ -22,7 +22,7 @@ describe('jshare', function() {
 		runJShareTest('customNamespace', {
 			value: 100
 		}, null, function(req, res, result) {
-			expect(result).to.eql('<script type="text/javascript">window.customNamespace={"value":100}</script>');
+			expect(result).to.eql('<script type="text/javascript">function jshareMergeObject(oldJshare, newJshare){\n\tvar result = {};\n\tfor(var prop in oldJshare){\n\t\tresult[prop] = oldJshare[prop];\n\t}\n\tfor(var prop in newJshare){\n\t\tresult[prop] = newJshare[prop];\n\t}\n\treturn result;\n}window.customNamespace=jshareMergeObject(window.customNamespace, {"value":100});</script>');
 		})
 	})
 
@@ -34,19 +34,19 @@ describe('jshare', function() {
 
 	it('should not contain script tag', function() {
 		runJShareTest('jshare', { value: 100 }, { outputScriptTag: false }, function(req, res, result) {
-			expect(result).to.be.eql('window.jshare={"value":100}');
+			expect(result.indexOf('<script>')).to.eql(-1);
 		})
 	})
 
 	it('should contain a reference to external script', function() {
 		runJShareTest('jshare', { value: 100 }, { useExternalJSFile:true }, function(req, res, result) {
-			expect(result).to.be.eql("<script type='text/javascript' src='/jshare.js'></script>");
+			expect(result).to.be.contain("<script type='text/javascript' src='/jshare.js");
 		})
 	})
 });
 
 function runJShareTest(namespace, data, options, callback) {
-	var app = { get: function(){} };
+	var app = { get: function(){}, routes:{get:{}} };
 	var req = {
 		app: app
 	};
