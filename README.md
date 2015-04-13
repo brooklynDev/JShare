@@ -21,7 +21,7 @@ First, you need to add the JShare middleware to your Express app **make sure to 
     app.configure(function(){
       app.use(jshare());
       app.use(app.router);
-  });
+    });
 
 Next, you need to make a call out to the JShare helper method in your layout file:
 
