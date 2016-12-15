@@ -38,7 +38,7 @@ describe('jshare', function() {
 		})
 	})
 
-	it('should not contain script tag in the ', function() {
+	it('should not contain script tag in the resulting payload', function() {
 		runJShareTest('jshare', { value: "</script><script>alert('xss')</script>" }, { outputScriptTag: false }, function(req, res, result) {
 			expect(result.indexOf('</script><script>')).to.eql(-1);
 		})
