@@ -1,17 +1,21 @@
 {
-    "name": "jshare"
-  , "description" : "Share you server side Node.js/Express variables with your client side Javascript."	
-  , "version": "0.0.9"
-  , "dependencies": {
+  "name": "jshare",
+  "description": "Share you server side Node.js/Express variables with your client side Javascript.",
+  "version": "0.0.9",
+  "dependencies": {
+    "serialize-javascript": "^1.3.0",
     "underscore": "*"
-    },
-   "devDependencies": {
-        "mocha": "*"
-      , "expect.js": "*"
-    }
-  , "author" : "Alex Friedman"
-  , "repository" :
-  { "type" : "git"
-  , "url" : "https://github.com/brooklynDev/JShare"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "expect.js": "*"
+  },
+  "author": "Alex Friedman",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brooklynDev/JShare"
   }
 }

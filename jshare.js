@@ -1,4 +1,5 @@
 var _ = require("underscore");
+var serialize = require("serialize-javascript");
 
 module.exports = function(namespace) {
 	return function(req, res, next) {
@@ -77,7 +78,7 @@ function getOutputJS(outputScriptTag, namespace, obj) {
 	}
 
 	output += jshareMergeObject.toString();
-	output += 'window.' + namespace + '=' + 'jshareMergeObject(window.' + namespace + ', ' + JSON.stringify(obj) + ');';
+	output += 'window.' + namespace + '=' + 'jshareMergeObject(window.' + namespace + ', ' + serialize(obj, {isJSON: true}) + ');';
 	
 	if(outputScriptTag === true) {
 		output += '</script>';
