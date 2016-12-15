@@ -38,6 +38,12 @@ describe('jshare', function() {
 		})
 	})
 
+	it('should not contain script tag in the ', function() {
+		runJShareTest('jshare', { value: "</script><script>alert('xss')</script>" }, { outputScriptTag: false }, function(req, res, result) {
+			expect(result.indexOf('</script><script>')).to.eql(-1);
+		})
+	})
+
 	it('should contain a reference to external script', function() {
 		runJShareTest('jshare', { value: 100 }, { useExternalJSFile:true }, function(req, res, result) {
 			expect(result).to.be.contain("<script type='text/javascript' src='/jshare.js");
