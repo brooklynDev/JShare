@@ -1,7 +1,7 @@
 {
   "name": "jshare",
   "description": "Share you server side Node.js/Express variables with your client side Javascript.",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "dependencies": {
     "serialize-javascript": "^1.3.0",
     "underscore": "*"
